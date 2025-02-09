@@ -3,7 +3,8 @@ import cls from './Text.module.scss';
 
 export enum TextTheme {
     PRIMARY = 'primary',
-    INFO = 'info',
+    SEARCH = 'search',
+    ADDITIONAL = 'additional',
 }
 
 export enum TextAlign{
@@ -30,7 +31,7 @@ export const Text = memo((props: TextProps) => {
     const {
         // className,
         text,
-        title,
+        // title,
         // theme = TextTheme.PRIMARY,
         // align = TextAlign.LEFT,
         // size = TextSize.M,
@@ -44,7 +45,6 @@ export const Text = memo((props: TextProps) => {
 
     return (
         <div className={""}>
-            {title && <p className={cls.title}>{title}</p>}
             {text && <p className={cls.text}>{text}</p>}
         </div>
     );

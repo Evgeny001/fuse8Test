@@ -6,14 +6,29 @@
     color: var(--secondary-color);
 }
 
-.info {
-    .title {
-        color: var(--red-light);
-    }
+.search {
+    color: #656EC2;
+    fonr: 'Fira Sans', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26.4px;
+    letter-spacing: 0;
+}
+.primary {
+    fonr: 'Fira Sans', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: 0;
 
-    .text {
-        color: var(--red-dark);
-    }
+}
+.additional {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 0;
+
 }
 
 .left {
