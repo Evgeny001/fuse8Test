@@ -1,0 +1,16 @@
+.inputWrapper {
+    display: flex;
+    justify-content: center; /* Центрируем инпут по горизонтали */
+    margin-bottom: 100px; /* Отступ вниз перед карточками */
+}
+
+.input {
+    width: 626px;
+    height: 64px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 18px;
+    text-align: center; /* Выравниваем текст внутри инпута */
+}
