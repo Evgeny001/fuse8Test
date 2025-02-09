@@ -14,31 +14,16 @@ interface ArticleListItemProps {
 export const CardListItem = memo((props: ArticleListItemProps) => {
     const { className, card } = props;
 
-
-
-//     return (
-//         <div className={className}>
-//             <Card >
-//                 <div className={cls.imageWrapper}>
-//
-//                     <Text text={card.results[0].name} className={cls.data}/>
-//                 </div>
-//                 <div className={cls.infoWrapper}>
-//
-//                 </div>
-//                 <Text text={card.results[0].created} className={cls.title}/>
-//             </Card>
-//         </div>
-//     );
-// });
     return (
         <div className={className}>
-            <Card>
-                <div className={cls.imageWrapper}>
-                    <Text text={card.results[0].name} className={cls.data} />
+            <Card className={cls.card}>
+                <div className={cls.title}>
+                    <Text text={card.results[0].name} />
                 </div>
-                <div className={cls.infoWrapper}></div>
-                <Text text={card.results[0].created} className={cls.title} />
+                <div className={cls.footer}>
+                    <Text text={`Status: ${card.results[0].status}`} />
+                    <Text text={`Created: ${card.results[0].created}`}  />
+                </div>
             </Card>
         </div>
     );

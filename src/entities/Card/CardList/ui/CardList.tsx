@@ -7,31 +7,14 @@ interface ArticleListProps {
     className?: string;
     card: CardType[]
     isLoading?: boolean;
-
 }
-//
-// export const CardList = memo((props: ArticleListProps) => {
-//   const { card } = props
-//
-//   const renderCard = (card: CardType) => {
-//     return (
-//     <CardListItem card={card} className={cls.card}/>
-//     )
-//   }
-//   debugger
-//   return (
-//     <div className={cls.CardList}>
-//      {card.length > 0 ? card.map(renderCard) : null}
-//     </div>
-//   )
-// })
+
 export const CardList = memo((props: ArticleListProps) => {
     const { card } = props;
 
-    const renderCard = (card: CardType, index: number) => {
-        const isLarge = index < 2 ? cls.large : cls.small;
+    const renderCard = (card: CardType) => {
 
-        return <CardListItem  card={card} className={`${cls.card} ${isLarge}`} />;
+        return <CardListItem  card={card} />;
     };
 
     return (

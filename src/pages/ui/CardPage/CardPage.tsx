@@ -10,7 +10,7 @@ const card: CardType = {
         count: 29,
         pages: 2,
         // next: "https://rickandmortyapi.com/api/character/?page=2&name=rick&status=alive",
-        next: "",
+        next: "https://rickandmortyapi.com/api/character/?page=2&name=rick&status=alive",
         prev: null
     },
     results: [

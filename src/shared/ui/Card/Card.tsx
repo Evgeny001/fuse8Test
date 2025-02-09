@@ -1,5 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react';
-import cls from './Card.module.css';
+import cls from './Card.module.scss';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement>{
     className?: string;

@@ -1,11 +1,22 @@
-.infoWrapper {
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   display: flex;
-  align-items: center;
-  margin-top: 8px;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
-.imageWrapper {
+
+.infoWrapper {
   display: flex;
-  align-items: center;
+  justify-content: flex-start; /* Выравниваем элементы по горизонтали */
+  align-items: center; /* Центрируем элементы по вертикали */
+  margin-top: auto; /* Отталкивает блок вниз */
+}
+
+.footer {
+display: flex;
 }
