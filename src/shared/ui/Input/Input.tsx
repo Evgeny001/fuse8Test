@@ -1,7 +1,8 @@
 import {
     ChangeEvent, InputHTMLAttributes, memo,
 } from 'react';
-import cls from './Input.module.scss';
+import cls from './Input.module.css';
+
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
@@ -14,7 +15,6 @@ interface InputProps extends HTMLInputProps {
 
 export const Input = memo((props : InputProps) => {
 
-  debugger
     const {
         className,
         value,
@@ -29,8 +29,6 @@ export const Input = memo((props : InputProps) => {
         onChange?.(e.currentTarget.value);
     };
 
-    // const placeholderText =
-
     return (
         <div className={cls.InputWrapper}>
                 <input
@@ -43,3 +41,4 @@ export const Input = memo((props : InputProps) => {
         </div>
     );
 });
+//возможон div гадо убрать

@@ -1,14 +1,12 @@
-import {memo} from "react";
-import {Card} from "@/shared/ui/Card/Card";
-import {Text} from "@/shared/ui/Text/Text";
-import {CardType} from "@/pages/ui/CardPage/card.types";
+import { memo } from 'react'
+import { Card } from '@/shared/ui/Card/Card'
+import { Text, TextAlign, TextSize, TextTheme } from '@/shared/ui/Text/Text'
+import { Result} from '@/pages/ui/CardPage/card.types'
 import cls from './CardListItem.module.scss'
 
-
 interface ArticleListItemProps {
-    className?: string;
-    card: CardType
-
+  className?: string
+  card: Result
 }
 
 export const CardListItem = memo((props: ArticleListItemProps) => {
@@ -17,14 +15,14 @@ export const CardListItem = memo((props: ArticleListItemProps) => {
     return (
         <div className={className}>
             <Card className={cls.card}>
-                <div className={cls.title}>
-                    <Text text={card.results[0].name} />
-                </div>
+                <article className={cls.title}>
+                    <Text text={card.name} theme={TextTheme.PRIMARY} size={TextSize.L}/>
+                </article>
                 <div className={cls.footer}>
-                    <Text text={`Status: ${card.results[0].status}`} />
-                    <Text text={`Created: ${card.results[0].created}`}  />
+                    <Text text={`Status: ${card.status}`} theme={TextTheme.ADDITIONAL} size={TextSize.S}/>
+                    <Text text={`Created: ${card.created}`} theme={TextTheme.ADDITIONAL}  size={TextSize.S} align={TextAlign.RIGHT}/>
                 </div>
             </Card>
-        </div>
+        </div >
     );
 });

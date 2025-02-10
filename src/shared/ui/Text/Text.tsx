@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import cls from './Text.module.scss';
+import cls from './Text.module.css';
+import {classNames, Mods} from "@/shared/classNames/classNames";
 
 export enum TextTheme {
     PRIMARY = 'primary',
-    SEARCH = 'search',
     ADDITIONAL = 'additional',
 }
 
@@ -14,13 +14,14 @@ export enum TextAlign{
 }
 
 export enum TextSize{
+    S = 'size_s',
     M = 'size_m',
     L = 'size_l',
+    XL = 'size_xl'
 }
 
 interface TextProps {
     className?: string;
-    title?: string;
     text?: string;
     theme?: TextTheme;
     align?: TextAlign;
@@ -29,23 +30,22 @@ interface TextProps {
 
 export const Text = memo((props: TextProps) => {
     const {
-        // className,
+        className,
         text,
-        // title,
-        // theme = TextTheme.PRIMARY,
-        // align = TextAlign.LEFT,
-        // size = TextSize.M,
+        theme = TextTheme.PRIMARY,
+        align = TextAlign.LEFT,
+        size = TextSize.M,
     } = props;
 
-    // const mods: Mods = {
-    //     [cls[theme]]: true,
-    //     [cls[align]]: true,
-    //     [cls[size]]: true,
-    // };
+    const mods: Mods = {
+        [cls[theme]]: true,
+        [cls[align]]: true,
+        [cls[size]]: true,
+    };
 
     return (
-        <div className={""}>
-            {text && <p className={cls.text}>{text}</p>}
+        <div className={classNames(cls.Text, mods, [className])}>
+            {text && <span className={cls.text}>{text}</span>}
         </div>
     );
 });

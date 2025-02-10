@@ -1,0 +1,25 @@
+.input  {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-shadow: 0 7px 12px 0 #64646F33;
+    border: 1px solid  transparent;
+    transition: box-shadow 0.3s, border-color 0.3s;
+
+
+}
+
+.input:focus {
+    border-color: #007BFF;     /* Изменение цвета границы при фокусе */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Легкое свечение при фокусе */
+}
+
+.input::placeholder {
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 40px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #656EC2;
+}

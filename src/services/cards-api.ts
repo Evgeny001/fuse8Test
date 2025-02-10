@@ -11,14 +11,14 @@ export const cardsApi = createApi({
     }),
     endpoints: builder => {
         return {
-            getCards: builder.query<any, any | void>({
-                query: (args) =>( {
-                    url: `character/?name=Morty`,
-                    params: args ,
-                }),
+            getCards: builder.query<any, string | void>({
+                query: (search = '') => {
+                    // Если введено меньше 3 символов, возвращаем пустую строку (ничего не ищем)
+                    return  `character/?name=${search}`;
+                }
             }),
         }
     },
 })
 
-export const { useGetCardsQuery } = cardsApi
+export const { useGetCardsQuery } = cardsApi;

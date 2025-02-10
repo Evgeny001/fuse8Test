@@ -1,58 +1,55 @@
-import {CardType} from "@/pages/ui/CardPage/card.types";
-import {Input} from "@/shared/ui/Input/Input";
-import {CardList} from "@/entities/Card/CardList/ui/CardList";
-import cls from './CardPage.module.scss'
+import { Input } from "@/shared/ui/Input/Input";
+import { CardList } from "@/entities/Card/CardList/ui/CardList";
+import cls from './CardPage.module.scss';
+import { useGetCardsQuery } from "@/services/cards-api";
+import { useState } from "react";
+import { Text, TextSize, TextTheme } from "@/shared/ui/Text/Text";
 
 export const CardPage = () => {
+    const [search, setSearch] = useState(''); // Для отображения в input
+    const [query, setQuery] = useState(''); // Для запроса
 
-const card: CardType = {
-    info: {
-        count: 29,
-        pages: 2,
-        // next: "https://rickandmortyapi.com/api/character/?page=2&name=rick&status=alive",
-        next: "https://rickandmortyapi.com/api/character/?page=2&name=rick&status=alive",
-        prev: null
-    },
-    results: [
-        {
-            id: 1,
-            name: "Rick Sanchez",
-            status: "Alive",
-            species: "Human",
-            type: "",
-            gender: "Male",
-            origin: {
-                name: "Earth",
-                url: "https://rickandmortyapi.com/api/location/1"
-            },
-            location: {
-                name: "Earth",
-                url: "https://rickandmortyapi.com/api/location/20"
-            },
-            image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-            episode: [
-                "https://rickandmortyapi.com/api/episode/1",
-                "https://rickandmortyapi.com/api/episode/2",
-                //...
-            ],
-            url: "https://rickandmortyapi.com/api/character/1",
-            created: "2017-11-04T18:48:46.250Z"
-        },
-    ]
-};
+    // Запрос с использованием кешированных данных
+    const { data, error, isLoading, isFetching } = useGetCardsQuery(query, {
+        skip: query.length < 4, // Пропускаем запрос, если длина запроса меньше 4 символов
+    });
 
-return (
-    <>
-        <div className={cls.inputWrapper}>
-            <Input placeholder="gi" className={cls.input}
-            />
+    // Обработчик изменения инпута
+    const handleSearchChange = (value: string) => {
+        setSearch(value); // Обновляем строку поиска
+        if (value.length >= 4) {
+            setQuery(value); // Если длина больше 3, отправляем запрос
+        } else {
+            setQuery(''); // Если меньше 4, очищаем запрос
+        }
+    };
+
+    return (
+        <div className={cls.container}>
+            <div className={cls.inputWrapper}>
+                <Input
+                    placeholder="Search characters..."
+                    className={cls.input}
+                    onChange={handleSearchChange}
+                    value={search}
+                    autoFocus
+                />
+                {/* Если есть результаты, показываем количество найденных персонажей */}
+                {query.length >= 4 && !isLoading && !isFetching && !error && data && data.results?.length > 0 && (
+                    <Text text={`Found characters: ${data.results.length || 0}`} theme={TextTheme.ADDITIONAL} size={TextSize.S} />
+                )}
+            </div>
+
+            {/* Если данные ещё загружаются */}
+            {isLoading && !isFetching && <div>Loading...</div>}
+
+            {/* Ошибка при запросе */}
+            {error && <div>Error occurred</div>}
+
+            {/* Если нет ошибки и результаты найдены, отображаем карточки */}
+            {query.length >= 4 && !isLoading && !isFetching && !error && data && data.results?.length > 0 && (
+                <CardList card={data.results} />
+            )}
         </div>
-        <CardList
-            card={new Array(16).fill(0).map((_, index) => ({
-                ...card,
-                id: String(index),
-            }))}
-        />
-    </>
-)
-}
+    );
+};

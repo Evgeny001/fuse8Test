@@ -8,7 +8,7 @@ interface Location {
     url: string;
 }
 
-interface Result {
+export interface Result {
     id: number;
     name: string;
     status: string;

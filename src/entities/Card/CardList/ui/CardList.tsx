@@ -1,20 +1,19 @@
 import { memo } from 'react';
-import {CardType} from "@/pages/ui/CardPage/card.types";
 import cls from './CardList.module.scss'
 import {CardListItem} from "@/entities/Card/CardListItem/ui/CardListItem";
 
 interface ArticleListProps {
     className?: string;
-    card: CardType[]
+    card: any
     isLoading?: boolean;
 }
 
 export const CardList = memo((props: ArticleListProps) => {
     const { card } = props;
 
-    const renderCard = (card: CardType) => {
+    const renderCard = (card: any) => {
 
-        return <CardListItem  card={card} />;
+        return <CardListItem  card={card} className={cls.CardListItem} />;
     };
 
     return (

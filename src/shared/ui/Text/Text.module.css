@@ -1,0 +1,42 @@
+.primary {
+    fonr: 'Fira Sans', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: 0;
+
+}
+.additional {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 0;
+
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.size_s {
+    font-size: 14px;
+}
+
+.size_m {
+    font-size: 16px;
+}
+.size_l {
+    font-size: 25px;
+}
+.size_xl {
+    font-size: 30px;
+}
